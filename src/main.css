@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+}
+
+#thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+table {
+    margin: 0 auto;
+}
+
+th, td {
+    background-color: #96D4D4;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+#timer {
+    position: fixed;
+    background-color: #FFF;
+}
+
+.center {
+    text-align: center;
+}
