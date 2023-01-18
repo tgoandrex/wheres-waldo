@@ -18,8 +18,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm start",
-    "build": "npm run build"
+    "start": "yarn start",
+    "build": "yarn run build"
   },
   "eslintConfig": {
     "extends": [
