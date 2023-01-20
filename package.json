@@ -10,6 +10,10 @@
     "mongodb": "^4.13.0",
     "mongoose": "^6.8.2"
   },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20"
+  },
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
@@ -18,20 +22,5 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build -- prefix client"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "concurrently": "^7.6.0",
-    "nodemon": "^2.0.20"
-  }
+  "main": "server.js"
 }
