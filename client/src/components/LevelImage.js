@@ -7,7 +7,7 @@ function LevelImage(props) {
     const param = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:${process.env.PORT}/coordinates/${param.level}`)
+        fetch(`http://localhost:10000/coordinates/${param.level}`)
         .then(res => res.json())
         .then(data => {
             setXCoord(data.x_coord);
