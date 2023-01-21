@@ -18,7 +18,7 @@ function LevelRoute() {
     useEffect(() => {
         if (timerRunning) {
             if(waldoFound) {
-                fetch(`http://${window.location.hostname}:10000/scoreboard/${param.level}`, {
+                fetch(`//${window.location.hostname}:10000/scoreboard/${param.level}`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({time: timer, username: sessionStorage.getItem('username') || 'Guest'})
