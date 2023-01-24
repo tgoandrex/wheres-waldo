@@ -6,14 +6,16 @@ function LevelImage(props) {
     const [yCoord, setYCoord] = useState();
     const param = useParams();
 
+    const rootUri = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : 'http://localhost:10000';
+
     useEffect(() => {
-        fetch(`https://wheres-waldo-51r0.onrender.com/coordinates/${param.level}`)
+        fetch(`${rootUri}/coordinates/${param.level}`)
         .then(res => res.json())
         .then(data => {
             setXCoord(data.x_coord);
             setYCoord(data.y_coord);
         })
-    }, [param.level]);
+    }, [param.level, rootUri]);
 
     const getCoords = (e) => {
         const clickedXCoord = e.pageX;

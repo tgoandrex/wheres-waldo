@@ -9,6 +9,8 @@ function LevelRoute() {
     const [timerRunning, setTimmerRunning] = useState(true);
     const [waldoFound, setWaldoFound] = useState(false);
 
+    const rootUri = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : 'http://localhost:10000';
+
     const param = useParams();
 
     const stopTimer = () => {
@@ -18,7 +20,7 @@ function LevelRoute() {
     useEffect(() => {
         if (timerRunning) {
             if(waldoFound) {
-                fetch(`https://wheres-waldo-51r0.onrender.com/scoreboard/${param.level}`, {
+                fetch(`${rootUri}/scoreboard/${param.level}`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({time: timer, username: sessionStorage.getItem('username') || 'Guest'})
@@ -39,7 +41,7 @@ function LevelRoute() {
         }
     // The below line is needed because adding 'timer' to the dependancy array would always submit the time as '0'
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [param.level, timerRunning, waldoFound])
+    }, [param.level, timerRunning, waldoFound, rootUri])
 
     return (
         <div>

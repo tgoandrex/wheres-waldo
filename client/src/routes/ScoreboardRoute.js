@@ -4,9 +4,8 @@ import { useParams } from 'react-router-dom';
 function ScoreboardRoute(props) {
     const [scores, setScores] = useState([]);
     const param = useParams();
-    const rootUri = process.env.REACT_APP_SERVER_URL
-        ? process.env.REACT_APP_SERVER_URL
-        : 'http://localhost:10000';
+
+    const rootUri = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : 'http://localhost:10000';
 
     useEffect(() => {
         fetch(`${rootUri}/scoreboard/${param.level}`)
