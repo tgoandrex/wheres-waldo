@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const connectionString = process.env.ATLAS_URI;
-const port = process.env.PORT || 10000;
+const port = process.env.PORT;
 
 const { Scoreboard } = require('./model/Scoreboard');
 const { Coordinates } = require('./model/Coordinates');

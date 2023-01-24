@@ -6,7 +6,7 @@ function ScoreboardRoute(props) {
     const param = useParams();
 
     useEffect(() => {
-        fetch(`http://${window.location.hostname}:10000/scoreboard/${param.level}`)
+        fetch(`https://wheres-waldo-51r0.onrender.com/scoreboard/${param.level}`)
         .then(res => res.json())
         .then(data => {
             setScores(data);
