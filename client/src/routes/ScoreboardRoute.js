@@ -4,14 +4,17 @@ import { useParams } from 'react-router-dom';
 function ScoreboardRoute(props) {
     const [scores, setScores] = useState([]);
     const param = useParams();
+    const rootUri = process.env.REACT_APP_SERVER_URL
+        ? process.env.REACT_APP_SERVER_URL
+        : 'http://localhost:10000';
 
     useEffect(() => {
-        fetch(`http://localhost:10000/scoreboard/${param.level}`)
+        fetch(`${rootUri}/scoreboard/${param.level}`)
         .then(res => res.json())
         .then(data => {
             setScores(data);
         })
-    }, [param.level])
+    }, [param.level, rootUri])
 
     return (
         <div className='center'>
