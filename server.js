@@ -15,7 +15,9 @@ const { Coordinates } = require('./model/Coordinates');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 // Get top 10 fastest scoreboard times from specific level
 app.get('/scoreboard/:level', async (req, res) => {
