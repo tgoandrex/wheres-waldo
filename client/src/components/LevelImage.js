@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import Modal from './Modal';
+
 function LevelImage(props) {
     const [xCoord, setXCoord] = useState();
     const [yCoord, setYCoord] = useState();
+    const [showModal, setShowModal] = useState();
     const param = useParams();
 
     const rootUri = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : 'http://localhost:10000';
@@ -25,13 +28,16 @@ function LevelImage(props) {
             if(clickedYCoord >= yCoord - 15 && clickedYCoord <= yCoord + 15 ) {
                 props.setWaldoFound(true);
             }
-        }   
+        } else {
+            setShowModal(true);
+        }
     }
 
     return (
-        <div>
-            <img alt='Wheres Waldo' src={require(`../images/level${props.level}.jpg`)} onClick={(e) => getCoords(e)} />
-        </div>
+        <>
+            <img className="level-image" alt='Wheres Waldo' src={require(`../images/level${props.level}.jpg`)} onClick={(e) => getCoords(e)} />
+            {showModal && <Modal setShowModal={setShowModal} />}
+        </>
     );
 }
   

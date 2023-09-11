@@ -26,14 +26,20 @@ function ScoreboardRoute(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {scores.map((score, id) => {
+                    {scores.length > 0 ?
+                    scores.map((score, id) => {
                         return (
                             <tr key={id}>
                                 <td>{score.username}</td>
                                 <td>{score.time}</td>
                             </tr>
                         )
-                    })}
+                    }) :
+                        <tr>
+                            <td>No scores yet!</td>
+                            <td>Find Waldo on this level to set a score!</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

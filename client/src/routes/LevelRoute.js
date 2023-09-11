@@ -44,7 +44,7 @@ function LevelRoute() {
     }, [param.level, timerRunning, waldoFound, rootUri])
 
     return (
-        <div>
+        <>
             <div id='timer'>
                 Time: {timer}
             </div>
@@ -52,7 +52,7 @@ function LevelRoute() {
             {waldoFound && (
                 <Navigate to='./scoreboard' replace={true} />
             )}
-        </div>
+        </>
     )
 }
 

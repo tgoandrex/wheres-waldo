@@ -6,7 +6,7 @@ function LevelThumbnail(props) {
                 <img src={props.level} alt='Level Thumbnail' height='250px' width='250px' />
             </a>
             <form action={`${props.id + 1}/scoreboard`}>
-                <input type='submit' value='Scoreboard' />
+                <input class='button' type='submit' value='Scoreboard' />
             </form>
         </div>
     );
