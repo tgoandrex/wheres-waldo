@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 function ScoreboardRoute(props) {
     const [scores, setScores] = useState([]);
+    const [scoresLoading, setScoresLoading] = useState(true);
     const param = useParams();
 
     const rootUri = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : 'http://localhost:10000';
@@ -12,6 +13,7 @@ function ScoreboardRoute(props) {
         .then(res => res.json())
         .then(data => {
             setScores(data);
+            setScoresLoading(false);
         })
     }, [param.level, rootUri])
 
@@ -26,19 +28,26 @@ function ScoreboardRoute(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {scores.length > 0 ?
-                    scores.map((score, id) => {
-                        return (
-                            <tr key={id}>
-                                <td>{score.username}</td>
-                                <td>{score.time}</td>
+                    {!scoresLoading ?
+                        scores.length > 0 ?
+                            scores.map((score, id) => {
+                                return (
+                                    <tr key={id}>
+                                        <td>{score.username}</td>
+                                        <td>{score.time}</td>
+                                    </tr>
+                                )
+                            }) 
+                        :
+                            <tr>
+                                <td>No scores yet!</td>
+                                <td>Find Waldo on this level to set a score</td>
                             </tr>
-                        )
-                    }) :
-                        <tr>
-                            <td>No scores yet!</td>
-                            <td>Find Waldo on this level to set a score!</td>
-                        </tr>
+                    :
+                    <tr>
+                        <td>Scores are loading</td>
+                        <td>Please wait a moment</td>
+                    </tr>
                     }
                 </tbody>
             </table>

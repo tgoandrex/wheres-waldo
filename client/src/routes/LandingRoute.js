@@ -25,8 +25,11 @@ function LandingRoute() {
             <h1 className='center'>Where's Waldo?</h1>
             <div className='center'>
                 {window.innerWidth < 600 &&
-                <p>Notice: Although you can play this game in mobile, it is highly recommended to play on a browser, 
-                    due to needing to see as much of the picture as possible.</p>}
+                    <p>
+                        Notice: Although you can play this game on mobile, it is highly recommended to play on desktop 
+                        or a device with a large screen, due to needing to see as much of the picture as possible.
+                    </p>
+                }
                 <label htmlFor='username'>Username: </label>
                 <input id="username-form" type='text' name='username' defaultValue={username} onChange={e => {setUsername(e.target.value);}} />
                 <button class="button" onClick={postUsername}>Submit</button><br />
